@@ -10,7 +10,7 @@
 #
 gap> START_TEST("ydcatoverkg03.tst");
 
-# doc/_Chapter_Object_of_Yetter-Drinfeld_categories_over_group_algebras.xml:15-82
+# doc/_Chapter_Object_of_Yetter-Drinfeld_categories_over_group_algebras.xml:15-33
 gap> LoadPackage("YDCatOverkG", "0", false);
 true
 gap> simples:= [];;
@@ -28,55 +28,6 @@ gap> for chi in irrepsS4_g do
 > weight := rec( g := g, rho := rho );
 > Add( simples, SimplesModYD( S4, weight) );
 > od;
-gap> simples;
-[ <Simple D(G)-Module with weight ( g = (1,2)
-  (3,
-   4), rho = [ (1,2), (1,3)(2,4), (3,4) ] -> [ [ [ 1 ] ], [ [ 1 ] ], [ [ 1 ] ]\
- ] )>, <Simple D(G)-Module with weight ( g = (1,2)
-  (3,
-   4), rho = [ (1,2), (1,3)(2,4), (3,4) ] -> [ [ [ -1 ] ], [ [ -1 ] ], [ [ -1 \
-] ] ] )>, <Simple D(G)-Module with weight ( g = (1,2)
-  (3,
-   4), rho = [ (1,2), (1,3)(2,4), (3,4) ] -> [ [ [ -1 ] ], [ [ 1 ] ], [ [ -1 ]\
- ] ] )>, <Simple D(G)-Module with weight ( g = (1,2)
-  (3,
-   4), rho = [ (1,2), (1,3)(2,4), (3,4) ] -> [ [ [ 1 ] ], [ [ -1 ] ], [ [ 1 ] \
-] ] )>, <Simple D(G)-Module with weight ( g = (1,2)
-  (3,
-   4), rho = [ (1,2), (1,3)(2,4), (3,4) ] -> [ [ [ 1, 0 ], [ 0, -1 ] ], [ [ 0,\
- 1 ], [ 1, 0 ] ], [ [ -1, 0 ], [ 0, 1 ] ] ] )> ]
-gap> simples[1];
-<Simple D(G)-Module with weight ( g = (1,2)
-(
-3,4), rho = [ (1,2), (1,3)(2,4), (3,4) ] -> [ [ [ 1 ] ], [ [ 1 ] ], [ [ 1 ] ] \
-] )>
-gap> Print(simples[5]);
-Weight = 
- g = (1,2)(3,4), 
- rho = [ (1,2), (1,3)(2,4), (3,4) ] -> [ [ [ 1, 0 ], [ 0, -1 ] ], [ [ 0, 1 ], \
-[ 1, 0 ] ], [ [ -1, 0 ], [ 0, 1 ] ] ]
-M(g, rho) = [ (1,2,3,4), (1,2) ] -> [ [ [ 0, 0, 0, 0, 0, -1 ], [ 0, 0, 0, 0, 1\
-, 0 ], [ 0, 0, 0, -1, 0, 0 ], [ 0, 0, 1, 0, 0, 0 ], [ 1, 0, 0, 0, 0, 0 ], [ 0,\
- -1, 0, 0, 0, 0 ] ], [ [ 1, 0, 0, 0, 0, 0 ], [ 0, -1, 0, 0, 0, 0 ], [ 0, 0, 0,\
- 0, 0, 1 ], [ 0, 0, 0, 0, 1, 0 ], [ 0, 0, 0, 1, 0, 0 ], [ 0, 0, 1, 0, 0, 0 ] ]\
- ]
-Base = [ ( () , [ 1, 0 ] ), ( () , [ 0, 1 ] ), ( (2,3) , [ 1, 0 ] ), 
-  ( (2,3) , [ 0, 1 ] ), ( (2,4,3) , [ 1, 0 ] ), ( (2,4,3) , [ 0, 1 ] ) ]
-G = Sym( [ 1 .. 4 ] )
-Structure Description of G = S4
-G_g = Group([ (1,2), (1,3)(2,4), (3,4) ])
-Structure Description of G_g = D8
-gap> Display(simples[1]);
-Weight = 
- g = (1,2)(3,4), 
- rho = [ (1,2), (1,3)(2,4), (3,4) ] -> [ [ [ 1 ] ], [ [ 1 ] ], [ [ 1 ] ] ]
-M(g, rho) = [ (1,2,3,4), (1,2) ] -> [ [ [ 0, 0, 1 ], [ 0, 1, 0 ], [ 1, 0, 0 ] \
-], [ [ 1, 0, 0 ], [ 0, 0, 1 ], [ 0, 1, 0 ] ] ]
-Base = [ ( () , [ 1 ] ), ( (2,3) , [ 1 ] ), ( (2,4,3) , [ 1 ] ) ]
-G = Sym( [ 1 .. 4 ] )
-Structure Description of G = S4
-G_g = Group([ (1,2), (1,3)(2,4), (3,4) ])
-Structure Description of G_g = D8
 
 #
 gap> STOP_TEST("ydcatoverkg03.tst", 1);

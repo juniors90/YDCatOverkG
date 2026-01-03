@@ -10,7 +10,7 @@
 #
 gap> START_TEST("ydcatoverkg01.tst");
 
-# doc/_Chapter_The_Drinfeld_double_of_a_group_algebra.xml:60-131
+# doc/_Chapter_The_Drinfeld_double_of_a_group_algebra.xml:60-130
 gap> LoadPackage("YDCatOverkG", "0", false);
 true
 gap> G:=SymmetricGroup(3);;
@@ -37,8 +37,7 @@ gap> D_G1G2((2,3));
 gap> G.1;
 (1,2,3)
 gap> simple1:=SimplesModAttachedToElement( G, G.1 )[1];
-<Simple D(G)-Module with weight ( g = (1,2,
-3), rho = [ (1,2,3) ] -> [ [ [ 1 ] ] ] )>
+<Simple D(G)-Module with Weight ( (1,2,3) , rho )>
 gap> Print(simple1);
 Weight = 
  g = (1,2,3), 

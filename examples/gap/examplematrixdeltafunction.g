@@ -29,8 +29,7 @@
 #! gap> G.1;
 #! (1,2,3)
 #! gap> simple1:=SimplesModAttachedToElement( G, G.1 )[1];
-#! <Simple D(G)-Module with weight ( g = (1,2,
-#! 3), rho = [ (1,2,3) ] -> [ [ [ 1 ] ] ] )>
+#! <Simple D(G)-Module with Weight ( (1,2,3) , rho )>
 #! gap> Print(simple1);
 #! Weight = 
 #!  g = (1,2,3), 

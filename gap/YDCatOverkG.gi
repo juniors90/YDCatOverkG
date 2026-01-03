@@ -64,7 +64,7 @@ end);
 InstallMethod(ViewString, "show D(G)-Module", [IsSimplesModYDObj],
     function(s)
         return Concatenation(
-            "<Simple D(G)-Module with weight ( g = ", ViewString(Weight(s).g), ", rho = ", String(Weight(s).rho), " )>"
+            "<Simple D(G)-Module with Weight ( ", ViewString(Weight(s).g), " , rho )>"
         );
 end);
 
@@ -82,19 +82,19 @@ InstallMethod(String, "show D(G)-Module to string", [IsSimplesModYDObj],
         );
 end);
 
-InstallMethod( Display, "for D(G)-Module object", [ IsSimplesModYDObj],
-  function( s )
-    Print(
-        Concatenation(
-            "Weight = \n g = ", ViewString( Weight( s ).g ),
-                   ", \n rho = ", String( Weight( s ).rho ), "\n",
-            "M(g, rho) = ", String( Simple( s ) ), "\n",
-            "Base = ", ViewString( Base( s ) ), "\n",
-            "G = ", ViewString( GroupAttachedToMod(s)), "\n",
-            "Structure Description of G = ", StructureDescription(GroupAttachedToMod(s)), "\n",
-            "G_g = ", ViewString( G_g(s) ), "\n",
-            "Structure Description of G_g = ", StructureDescription(G_g(s)), "\n"
-        )
-    );
+InstallMethod(
+    Display,
+    "for D(G)-Module object",
+    [ IsSimplesModYDObj],
+    function( s )
+        Print( "Weight = \n" );
+        Print("g = ", ViewString( Weight( s ).g ), ",\n");
+        Print("rho = ", String( Weight( s ).rho ),"\n");
+        Print("M(g, rho) = ", String( Simple( s ) ), "\n");
+        Print("Base = ", ViewString( Base( s ) ), "\n");
+        Print("G = ", ViewString( GroupAttachedToMod(s) ), "\n");
+        Print("Structure Description of G = ", StructureDescription(GroupAttachedToMod(s)), "\n");
+        Print("G_g = ", ViewString( G_g(s) ), "\n");
+        Print("Structure Description of G_g = ", StructureDescription(G_g(s)), "\n");
   end );
 
