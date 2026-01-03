@@ -2,7 +2,7 @@
 #!
 #! @Section Finding a Simples Modules attached to Element
 #!
-#! @Arguments G, g, rho, allPairsInG, allElementSDP
+#! @Arguments G, g, rho
 #! @Returns the basis of the tensor $\Bbbk G \otimes V$ as formal pairs.
 #! @Description
 #! Calcula la Base de un módulo simple $M(g, \rho)$, donde
@@ -23,7 +23,7 @@ DeclareGlobalFunction( "TensorBasisForSimpleMod" );
 #! $\mathcal{O}_g = \{xgx^{-1} \mid x \in \Gamma\}$ la clase de
 #! conjugación de $g$, y por $\Gamma_g = \{x \in \Gamma \mid xg = gx\}$
 #! el subgrupo de sotropía de $g$.
-#DeclareGlobalFunction( "Centralizers" );
+DeclareGlobalFunction( "GetCentralizers" );
 
 #! @Arguments G
 #! @Returns una lista de $\Gamma_g = \{x \in \Gamma \mid xg = gx\}$
@@ -36,8 +36,22 @@ DeclareGlobalFunction( "TensorBasisForSimpleMod" );
 #! $\mathcal{O}_g = \{xgx^{-1} \mid x \in \Gamma\}$ la clase de
 #! conjugación de $g$, y por $\Gamma_g = \{x \in \Gamma \mid xg = gx\}$
 #! el subgrupo de sotropía de $g$.
-#DeclareGlobalFunction( "CentralizerOfElement" );
+DeclareGlobalFunction( "GetCentralizerOfElement" );
 
+#! @Arguments G
+#! @Returns A list of all simple modules with weight $M(g, \rho)$.
+#! @Description
+#! We consider
 DeclareGlobalFunction( "SimplesMod" );
 
+#!
+#! @InsertChunk Example_SimplesMod
+#!
+#! @Arguments G, g
+#! @Returns A list of all simple modules with weight $M(g, \rho)$.
+#! @Description
+#! We consider
 DeclareGlobalFunction( "SimplesModAttachedToElement" );
+#!
+#! @InsertChunk Example_SimplesModAttachedToElement
+#!

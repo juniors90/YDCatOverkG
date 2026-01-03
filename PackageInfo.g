@@ -102,9 +102,11 @@ AutoDoc := rec(
             "group algebras.\n"
             ),
         Acknowledgements := Concatenation(
-             "This package was developed during my Ph.D. studies. ",
-             "I thank Agustín García Iglesias for ", 
-             "his guidance and helpful feedback.<P/>\n\n",
+            "This package was initiated during my Ph.D. studies. ",
+            "I am grateful to my Ph.D. advisor, ",
+            "Agustín García Iglesias, for his guidance and insightful ",
+            "comments that helped shape this work.",
+            "<P/>\n\n",
             "This documentation was prepared using the ",
             "&GAPDoc; package <Cite Key='GAPDoc'/>.\n",
             "<P/>\n"

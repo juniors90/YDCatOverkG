@@ -22,7 +22,7 @@ InstallGlobalFunction( TensorBasisForSimpleMod, function( G, g, rho )
 end);
 
 
-GetCentralizers@:= function( G )
+InstallGlobalFunction( GetCentralizers, function( G )
     local c, conjClasses, rep, size, ratio, centralizer, centralizers;
     
     centralizers := [];
@@ -42,10 +42,10 @@ GetCentralizers@:= function( G )
         fi;
     od;
     return centralizers;
-end;
+end);
 
 
-GetCentralizerOfElement@ := function(G, g )
+InstallGlobalFunction(GetCentralizerOfElement, function(G, g )
     local centralizer, sizeG, sizeC, classSize, check, idx, repElementSDP;
 
     if not (g in List(ConjugacyClasses(G), Representative)) then
@@ -75,20 +75,20 @@ GetCentralizerOfElement@ := function(G, g )
         centralizerSize := sizeC,
         structure := StructureDescription( centralizer ),
     );
-end;
+end);
 
 
 InstallGlobalFunction( SimplesMod, function( G )
     local c, irrepsGamma_g, simples, rho, chi, weight, centralizers;
 
     simples:= [];;
-    centralizers := GetCentralizers@( G );
+    centralizers := GetCentralizers( G );
 
     for c in centralizers do
         irrepsGamma_g := Irr( c.centralizer );
         for chi in irrepsGamma_g do
             rho := IrreducibleAffordingRepresentation( chi );;
-            weight:= rec(g:= c.g, rho:= rho);
+            weight:= rec(g:= c.rep, rho:= rho);
             Add( simples, SimplesModYD( G, weight) );
         od;
     od;

@@ -10,27 +10,23 @@
 #
 gap> START_TEST("ydcatoverkg03.tst");
 
-# doc/_Chapter_Utilities.xml:63-84
+# doc/_Chunks.xml:28-45
 gap> LoadPackage("YDCatOverkG", "0", false);
 true
-gap> G := SymmetricGroup(3);
+gap> G:=SymmetricGroup(3);
 Sym( [ 1 .. 3 ] )
-gap> delta_g1:=DeltaFunctionForElementOfG(G.1, Rationals);
-function( elem2 ) ... end
-gap> delta_g1(G.1);
-1
-gap> delta_g1(G.2);
-0
-gap> delta_g1((1,3,2));
-0
-gap> delta_g1((1,2));
-0
-gap> delta_g1((1,2,3));
-1
-gap> delta_g1((2,3));
-0
-gap> G.1;
-(1,2,3)
+gap> repCC:= List(ConjugacyClasses(G), Representative);
+[ (), (1,2), (1,2,3) ]
+gap> simples_attached_to_e := SimplesModAttachedToElement( G, repCC[1] );
+[ <Simple D(G)-Module with Weight ( () , rho )>, 
+  <Simple D(G)-Module with Weight ( () , rho )>, 
+  <Simple D(G)-Module with Weight ( () , rho )> ]
+gap> simples_attached_to_12 := SimplesModAttachedToElement( G, repCC[2] );
+[ <Simple D(G)-Module with Weight ( (1,2) , rho )>, 
+  <Simple D(G)-Module with Weight ( (1,2) , rho )> ]
+gap> simples_attached_to_123 := SimplesModAttachedToElement( G, repCC[2] );
+[ <Simple D(G)-Module with Weight ( (1,2) , rho )>, 
+  <Simple D(G)-Module with Weight ( (1,2) , rho )> ]
 
 #
 gap> STOP_TEST("ydcatoverkg03.tst", 1);

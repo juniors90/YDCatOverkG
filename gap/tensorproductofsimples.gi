@@ -23,7 +23,7 @@ InstallGlobalFunction( TensorProductOfSimplesModYD, function( simple1, simple2 )
     gen2  := simple2!.GeneratorsOfImages;
     mgens := List( [1..Length( gens )],
                     i -> TensorProductOfMat( gen1[i], gen2[i] ) );
-    newrho   := GroupHomomorphismByImagesNC( simple1!.GroupAttachedToMod, Group( mgens ) );
+    newrho   := GroupHomomorphismByImagesNC( gens, Group( mgens ) );
     rep   := rec(
                 group             := simple1!.GroupAttachedToMod,
                 generatorsofgroup := gens,        # new feature
