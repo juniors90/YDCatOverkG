@@ -5,8 +5,7 @@
 #
 ReadPackage( "YDCatOverkG", "gap/YDCatOverkG.gi" );
 ReadPackage( "YDCatOverkG", "gap/GModElement.gi" ); 
-ReadPackage( "YDCatOverkG", "gap/basisforYDmodule.gi" );
-ReadPackage( "YDCatOverkG", "gap/tensorproductmatrix.gi" ); 
+ReadPackage( "YDCatOverkG", "gap/basisforYDmodule.gi" ); 
 ReadPackage( "YDCatOverkG", "gap/matrixfordeltafunction.gi" );
 ReadPackage( "YDCatOverkG", "gap/deltafunction.gi" );
 ReadPackage( "YDCatOverkG", "gap/tensorproductofsimples.gi" );

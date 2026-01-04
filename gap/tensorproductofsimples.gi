@@ -1,5 +1,4 @@
 
-
 ##############################################################################
 ##
 ##  TensorProductMatrix( A, B )  . . .  Tensor product of two matrices
@@ -16,14 +15,31 @@
 ##
 ##############################################################################
 
+InstallGlobalFunction( TensorProductOfMat, function( A, B )
+    local u, v, matrix;
+    
+    matrix := [ ];
+    
+    for u in A do
+        for v in B do
+            Add( matrix, Flat( List( u, x -> x * v ) ) );
+        od;
+    od;
+
+    return matrix ;
+end);
+
+##############################################################################
+
 InstallGlobalFunction( TensorProductOfSimplesModYD, function( simple1, simple2 )
-    local gens, mgens, gen1, gen2, newrho, rep;
-    gens  := simple1!.GeneratorsOfG;
-    gen1  := simple1!.GeneratorsOfImages;
-    gen2  := simple2!.GeneratorsOfImages;
+    local gens, mgens, gen1, gen2, newrho, rep, G;
+    G  := simple1!.GroupAttachedToMod;
+    gens := GeneratorsOfGroup( G );
+    gen1  := List( gens, x -> x^(simple1!.Simple) );;
+    gen2  := List( gens, x -> x^(simple2!.Simple) );;
     mgens := List( [1..Length( gens )],
                     i -> TensorProductOfMat( gen1[i], gen2[i] ) );
-    newrho   := GroupHomomorphismByImagesNC( gens, Group( mgens ) );
+    newrho   := GroupHomomorphismByImagesNC( G, Group( mgens ), gens, mgens );
     rep   := rec(
                 group             := simple1!.GroupAttachedToMod,
                 generatorsofgroup := gens,        # new feature

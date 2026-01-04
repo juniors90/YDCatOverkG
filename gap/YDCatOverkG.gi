@@ -6,7 +6,7 @@
 #
 
 SimplesModYD := function( G, weight)
-    local obj, M_g_rho, base;
+    local obj, M_g_rho, base, gens, mgens, newrho, x;
     M_g_rho := InducedSubgroupRepresentation( G, weight.rho );;
     base := TensorBasisForSimpleMod( G, weight.g, weight.rho );;
     obj := Objectify( SimplesModYDType, rec( ) );
@@ -97,4 +97,3 @@ InstallMethod(
         Print("G_g = ", ViewString( G_g(s) ), "\n");
         Print("Structure Description of G_g = ", StructureDescription(G_g(s)), "\n");
   end );
-

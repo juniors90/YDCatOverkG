@@ -46,7 +46,7 @@ end);
 
 
 InstallGlobalFunction(GetCentralizerOfElement, function(G, g )
-    local centralizer, sizeG, sizeC, classSize, check, idx, repElementSDP;
+    local centralizer, sizeG, sizeC, classSize, idx, repElementSDP;
 
     if not (g in List(ConjugacyClasses(G), Representative)) then
         Error("⚠️ The element g is not a representative of the conjugation class of G.\n");
@@ -59,13 +59,7 @@ InstallGlobalFunction(GetCentralizerOfElement, function(G, g )
     sizeG := Size(G);
     sizeC := Size(centralizer);
     classSize := sizeG / sizeC;
-    
-    
-    # (opcional) chequeo de consistencia con la clase de conjugación real
-    check := Size(ConjugacyClass(G, g));
-    if check <> classSize then
-        Error("⚠️ Error: la verificación no coincide.\n");
-    fi;
+
     
     # Devolvemos un registro con la info
     return rec(
