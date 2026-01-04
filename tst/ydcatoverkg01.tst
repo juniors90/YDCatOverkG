@@ -10,7 +10,7 @@
 #
 gap> START_TEST("ydcatoverkg01.tst");
 
-# doc/_Chunks.xml:51-78
+# doc/_Chunks.xml:51-80
 gap> LoadPackage("YDCatOverkG", "0", false);
 true
 gap> G:=SymmetricGroup(3);
@@ -23,7 +23,7 @@ gap> simples_attached_to_e := SimplesModAttachedToElement( G, repCC[1] );
   <Simple D(G)-Module with Weight ( () , rho )> ]
 gap> rho:=simples_attached_to_e[3];
 <Simple D(G)-Module with Weight ( () , rho )>
-gap> TensorProductOfSimplesModYD(rho, rho);
+gap> product1:=TensorProductOfSimplesModYD(rho, rho);
 rec( dimension := 4, generatorsofgroup := [ (1,2,3), (1,2) ], 
   genimages := 
     [ 
@@ -37,6 +37,8 @@ rec( dimension := 4, generatorsofgroup := [ (1,2,3), (1,2) ],
          ], 
       [ [ 0, 0, 0, E(3)^2 ], [ 0, 0, 1, 0 ], [ 0, 1, 0, 0 ], 
           [ E(3), 0, 0, 0 ] ] ] )
+gap> product1=rho*rho;
+true
 
 #
 gap> STOP_TEST("ydcatoverkg01.tst", 1);

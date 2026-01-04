@@ -16,7 +16,7 @@
 #!   <Simple D(G)-Module with Weight ( () , rho )> ]
 #! gap> rho:=simples_attached_to_e[3];
 #! <Simple D(G)-Module with Weight ( () , rho )>
-#! gap> TensorProductOfSimplesModYD(rho, rho);
+#! gap> product1:=TensorProductOfSimplesModYD(rho, rho);
 #! rec( dimension := 4, generatorsofgroup := [ (1,2,3), (1,2) ], 
 #!   genimages := 
 #!     [ 
@@ -30,5 +30,7 @@
 #!          ], 
 #!       [ [ 0, 0, 0, E(3)^2 ], [ 0, 0, 1, 0 ], [ 0, 1, 0, 0 ], 
 #!           [ E(3), 0, 0, 0 ] ] ] )
+#! gap> product1=rho*rho;
+#! true
 #! @EndExampleSession
 #! @EndChunk
