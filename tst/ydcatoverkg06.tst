@@ -10,27 +10,27 @@
 #
 gap> START_TEST("ydcatoverkg06.tst");
 
-# doc/_Chapter_Utilities.xml:63-84
+# doc/_Chapter_Utilities.xml:27-48
 gap> LoadPackage("YDCatOverkG", "0", false);
 true
 gap> G := SymmetricGroup(3);
 Sym( [ 1 .. 3 ] )
-gap> delta_g1:=DeltaFunctionForElementOfG(G.1, Rationals);
-function( elem2 ) ... end
-gap> delta_g1(G.1);
-1
-gap> delta_g1(G.2);
-0
-gap> delta_g1((1,3,2));
-0
-gap> delta_g1((1,2));
-0
-gap> delta_g1((1,2,3));
-1
-gap> delta_g1((2,3));
-0
-gap> G.1;
-(1,2,3)
+gap> irreps := IrreducibleRepresentations(G);
+[ Pcgs([ (2,3), (1,2,3) ]) -> [ [ [ 1 ] ], [ [ 1 ] ] ], 
+  Pcgs([ (2,3), (1,2,3) ]) -> [ [ [ -1 ] ], [ [ 1 ] ] ], 
+  Pcgs([ (2,3), (1,2,3) ]) -> 
+    [ [ [ 0, 1 ], [ 1, 0 ] ], [ [ E(3), 0 ], [ 0, E(3)^2 ] ] ] ]
+gap> rho := irreps[3];
+Pcgs([ (2,3), (1,2,3) ]) -> 
+[ [ [ 0, 1 ], [ 1, 0 ] ], [ [ E(3), 0 ], [ 0, E(3)^2 ] ] ]
+gap> A := rho(G.1);
+[ [ E(3), 0 ], [ 0, E(3)^2 ] ]
+gap> B := rho(G.2);
+[ [ 0, E(3)^2 ], [ E(3), 0 ] ]
+gap> AtensorB := TensorProductOfMat( A, B );
+[ [ 0, 1, 0, 0 ], [ E(3)^2, 0, 0, 0 ], [ 0, 0, 0, E(3) ], [ 0, 0, 1, 0 ] ]
+gap> AtensorB = KroneckerProduct(A, B);
+true
 
 #
 gap> STOP_TEST("ydcatoverkg06.tst", 1);

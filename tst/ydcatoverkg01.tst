@@ -10,7 +10,7 @@
 #
 gap> START_TEST("ydcatoverkg01.tst");
 
-# doc/_Chunks.xml:51-80
+# doc/_Chunks.xml:71-100
 gap> LoadPackage("YDCatOverkG", "0", false);
 true
 gap> G:=SymmetricGroup(3);

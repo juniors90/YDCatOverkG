@@ -38,6 +38,15 @@ DeclareGlobalFunction( "GetCentralizers" );
 #! el subgrupo de sotropía de $g$.
 DeclareGlobalFunction( "GetCentralizerOfElement" );
 
+#! @Arguments G_g
+#! @Returns A list of all simple modules with weight $M(g, \rho)$.
+#! @Description
+#! We consider
+DeclareGlobalFunction( "SimplesModByCentralizer" );
+#!
+#! @InsertChunk Example_GetCentralizerOfElement
+#!
+
 #! @Arguments G
 #! @Returns A list of all simple modules with weight $M(g, \rho)$.
 #! @Description

@@ -18,7 +18,7 @@ Persons := [
   rec(
     FirstNames := "Juan David",
     LastName := "Ferreira",
-    WWWHome := "https://gitlab.com/juniors90/",
+    WWWHome := "https://github.com/juniors90/",
     Email := "juandavid9a0@gmail.com",
     IsAuthor := true,
     IsMaintainer := true,
@@ -38,7 +38,7 @@ PackageInfoURL  := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
 README_URL      := Concatenation( ~.PackageWWWHome, "README.md" ),
 ArchiveURL      := Concatenation( ~.SourceRepository.URL,
                                  "/releases/download/v", ~.Version,
-                                 "/", ~.PackageName, "-", ~.Version ),
+                                 "/", ~.PackageName, "-", ~.Version, ".tar.gz" ),
 
 ArchiveFormats := ".tar.gz",
 
@@ -115,5 +115,3 @@ AutoDoc := rec(
 ),
 
 ));
-
-

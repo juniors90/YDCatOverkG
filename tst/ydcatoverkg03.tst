@@ -10,26 +10,20 @@
 #
 gap> START_TEST("ydcatoverkg03.tst");
 
-# doc/_Chunks.xml:2-22
+# doc/_Chunks.xml:2-16
 gap> LoadPackage("YDCatOverkG", "0", false);
 true
 gap> G := SymmetricGroup(3);
 Sym( [ 1 .. 3 ] )
-gap> all_simples := SimplesMod( G );
+gap> repsCC := List(ConjugacyClasses(G), Representative);
+[ (), (1,2), (1,2,3) ]
+gap> G_e := GetCentralizerOfElement(G, repsCC[1] );
+rec( G := Sym( [ 1 .. 3 ] ), centralizer := S3, centralizerSize := 6, 
+  classSize := 1, g := (), structure := "S3" )
+gap> SimplesModByCentralizer(G_e);
 [ <Simple D(G)-Module with Weight ( () , rho )>, 
   <Simple D(G)-Module with Weight ( () , rho )>, 
-  <Simple D(G)-Module with Weight ( () , rho )>, 
-  <Simple D(G)-Module with Weight ( (1,2) , rho )>, 
-  <Simple D(G)-Module with Weight ( (1,2) , rho )>, 
-  <Simple D(G)-Module with Weight ( (1,2,3) , rho )>, 
-  <Simple D(G)-Module with Weight ( (1,2,3) , rho )>, 
-  <Simple D(G)-Module with Weight ( (1,2,3) , rho )> ]
-gap> dim_drinfelf_double_of_G := Order(G)^2; # dim(D(H))
-36
-gap> sum_squares_of_M_g_rho := Sum(List(all_simples, x -> Length(Base(x))^2));
-36
-gap> dim_drinfelf_double_of_G = sum_squares_of_M_g_rho;
-true
+  <Simple D(G)-Module with Weight ( () , rho )> ]
 
 #
 gap> STOP_TEST("ydcatoverkg03.tst", 1);

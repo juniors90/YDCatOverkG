@@ -10,23 +10,26 @@
 #
 gap> START_TEST("ydcatoverkg04.tst");
 
-# doc/_Chunks.xml:28-45
+# doc/_Chunks.xml:22-42
 gap> LoadPackage("YDCatOverkG", "0", false);
 true
-gap> G:=SymmetricGroup(3);
+gap> G := SymmetricGroup(3);
 Sym( [ 1 .. 3 ] )
-gap> repCC:= List(ConjugacyClasses(G), Representative);
-[ (), (1,2), (1,2,3) ]
-gap> simples_attached_to_e := SimplesModAttachedToElement( G, repCC[1] );
+gap> all_simples := SimplesMod( G );
 [ <Simple D(G)-Module with Weight ( () , rho )>, 
   <Simple D(G)-Module with Weight ( () , rho )>, 
-  <Simple D(G)-Module with Weight ( () , rho )> ]
-gap> simples_attached_to_12 := SimplesModAttachedToElement( G, repCC[2] );
-[ <Simple D(G)-Module with Weight ( (1,2) , rho )>, 
-  <Simple D(G)-Module with Weight ( (1,2) , rho )> ]
-gap> simples_attached_to_123 := SimplesModAttachedToElement( G, repCC[2] );
-[ <Simple D(G)-Module with Weight ( (1,2) , rho )>, 
-  <Simple D(G)-Module with Weight ( (1,2) , rho )> ]
+  <Simple D(G)-Module with Weight ( () , rho )>, 
+  <Simple D(G)-Module with Weight ( (1,2) , rho )>, 
+  <Simple D(G)-Module with Weight ( (1,2) , rho )>, 
+  <Simple D(G)-Module with Weight ( (1,2,3) , rho )>, 
+  <Simple D(G)-Module with Weight ( (1,2,3) , rho )>, 
+  <Simple D(G)-Module with Weight ( (1,2,3) , rho )> ]
+gap> dim_drinfelf_double_of_G := Order(G)^2; # dim(D(H))
+36
+gap> sum_squares_of_M_g_rho := Sum(List(all_simples, x -> Length(Base(x))^2));
+36
+gap> dim_drinfelf_double_of_G = sum_squares_of_M_g_rho;
+true
 
 #
 gap> STOP_TEST("ydcatoverkg04.tst", 1);

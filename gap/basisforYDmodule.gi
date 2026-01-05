@@ -1,4 +1,5 @@
 
+
 InstallGlobalFunction( TensorBasisForSimpleMod, function( G, g, rho )
     local rec_rho, Vbase, cosets, Gbase, TensorBase, idxs, Gamma_g;
 
@@ -36,7 +37,7 @@ InstallGlobalFunction( GetCentralizers, function( G )
         # Verificación de la fórmula |clase| = |G| / |centralizador|
         ratio := Size(G) / Size(centralizer);
         if ratio = size then
-            Add(centralizers, rec(centralizer:=centralizer, rep:=rep));;
+            Add(centralizers, rec(centralizer := centralizer, g := rep));;
         else
             Print("¡Error en la verificación!\n");
         fi;
@@ -49,7 +50,7 @@ InstallGlobalFunction(GetCentralizerOfElement, function(G, g )
     local centralizer, sizeG, sizeC, classSize, idx, repElementSDP;
 
     if not (g in List(ConjugacyClasses(G), Representative)) then
-        Error("⚠️ The element g is not a representative of the conjugation class of G.\n");
+        Error("The element g is not a representative of the conjugation class of G.\n");
     fi;
     
     # Calcula el centralizador de g en G
@@ -60,10 +61,10 @@ InstallGlobalFunction(GetCentralizerOfElement, function(G, g )
     sizeC := Size(centralizer);
     classSize := sizeG / sizeC;
 
-    
     # Devolvemos un registro con la info
     return rec(
-        rep := g,
+        G := G,
+        g := g,
         centralizer := centralizer,
         classSize := classSize,
         centralizerSize := sizeC,
@@ -72,34 +73,43 @@ InstallGlobalFunction(GetCentralizerOfElement, function(G, g )
 end);
 
 
-InstallGlobalFunction( SimplesMod, function( G )
-    local c, irrepsGamma_g, simples, rho, chi, weight, centralizers;
+ComputeSimples@:=function(G, g, irrepsGamma_g )
+    local chi, rho, weight, simples;
+    simples := [];
+    for chi in irrepsGamma_g do
+        rho := IrreducibleAffordingRepresentation( chi );;
+        weight := rec( g := g, rho := rho );
+        Add( simples, SimplesModYD( G, weight ) );
+    od;
+    return simples;
+end;
 
-    simples:= [];;
-    centralizers := GetCentralizers( G );
 
+InstallGlobalFunction( SimplesModByCentralizer, function( G_g )
+    local irrepsGamma_g, simples, G, g;
+    irrepsGamma_g := Irr( G_g.centralizer );
+    G := G_g.G;
+    g := G_g.g;
+    simples := ComputeSimples@(G, g, irrepsGamma_g);
+    return simples;
+end );
+
+
+InstallGlobalFunction(SimplesMod, function(G)
+    local c, irrepsGamma_g, simples, centralizers;
+    simples := [];
+    centralizers := GetCentralizers(G);
     for c in centralizers do
-        irrepsGamma_g := Irr( c.centralizer );
-        for chi in irrepsGamma_g do
-            rho := IrreducibleAffordingRepresentation( chi );;
-            weight:= rec(g:= c.rep, rho:= rho);
-            Add( simples, SimplesModYD( G, weight) );
-        od;
+        irrepsGamma_g := Irr(c.centralizer);
+        Append(simples, ComputeSimples@(G, c.g, irrepsGamma_g));
     od;
     return simples;
 end);
 
 
 InstallGlobalFunction( SimplesModAttachedToElement, function(G, g )
-    local base, c, i, irrepsGamma_g, simples, rho, chi, M_g_rho, weight;
-
-    simples:= [];;
-
+    local irrepsGamma_g, simples ;
     irrepsGamma_g := Irr(  Centralizer(G, g) );
-    for chi in irrepsGamma_g do
-        rho := IrreducibleAffordingRepresentation( chi );;
-        weight := rec( g := g, rho := rho );
-        Add( simples, SimplesModYD( G, weight) );
-    od;
+    simples := ComputeSimples@(G, g, irrepsGamma_g);
     return simples;
 end );

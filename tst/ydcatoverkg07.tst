@@ -10,24 +10,27 @@
 #
 gap> START_TEST("ydcatoverkg07.tst");
 
-# doc/_Chapter_Object_of_Yetter-Drinfeld_categories_over_group_algebras.xml:15-33
+# doc/_Chapter_Utilities.xml:63-84
 gap> LoadPackage("YDCatOverkG", "0", false);
 true
-gap> simples:= [];;
-gap> S4 := SymmetricGroup(4);
-Sym( [ 1 .. 4 ] )
-gap> repsCC:=List(ConjugacyClasses(S4), Representative);
-[ (), (1,2), (1,2)(3,4), (1,2,3), (1,2,3,4) ]
-gap> g := repsCC[3];
-(1,2)(3,4)
-gap> S4_g := Centralizer( S4, g );
-Group([ (1,2), (1,3)(2,4), (3,4) ])
-gap> irrepsS4_g := Irr( S4_g  );;
-gap> for chi in irrepsS4_g do
-> rho := IrreducibleAffordingRepresentation( chi );
-> weight := rec( g := g, rho := rho );
-> Add( simples, SimplesModYD( S4, weight) );
-> od;
+gap> G := SymmetricGroup(3);
+Sym( [ 1 .. 3 ] )
+gap> delta_g1:=DeltaFunctionForElementOfG(G.1, Rationals);
+function( elem2 ) ... end
+gap> delta_g1(G.1);
+1
+gap> delta_g1(G.2);
+0
+gap> delta_g1((1,3,2));
+0
+gap> delta_g1((1,2));
+0
+gap> delta_g1((1,2,3));
+1
+gap> delta_g1((2,3));
+0
+gap> G.1;
+(1,2,3)
 
 #
 gap> STOP_TEST("ydcatoverkg07.tst", 1);
